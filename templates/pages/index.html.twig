@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+{% block title 'Ma Super Agence' %}
+{% block body %}
+    <div class="jumbotron text-center">
+        <h1>Ma Super Agence</h1>
+        <p>Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression.
+            Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500, quand un imprimeur anonyme
+            assembla ensemble des
+            morceaux de texte pour réaliser un livre spécimen de polices de texte. Il n'a pas fait que survivre cinq siècles,
+        </p>
+    </div>
+
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Gerer les Biens</h5>
+                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                        <a href="{{ path('lesbiens.index') }}" class="btn btn-primary">Gestion les Biens</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Gerer les agences</h5>
+                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                        <a href="{{ path('lesagences.index') }}" class="btn btn-primary">Gestion les agences</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Gerer les Locataires</h5>
+                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                        <a href="{{ path('leslocataires.index') }}" class="btn btn-primary">Gestion des Locataires</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Gerer les Employé(e)s</h5>
+                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                        <a href="{{ path('lesemployes.index') }}" class="btn btn-primary">Gestion des Employé(e)s</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

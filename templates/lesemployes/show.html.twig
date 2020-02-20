@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title employee.lastname %}
+
+{% block body %}
+    <div class="jumbotron">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+
+                </div>
+                <div class="col-md-4">
+                    <h1>{{ employee.lastname }}</h1>
+                    <h2>{{ employee.firstname }}</h2>
+                    <div class="text-primary" style="font-size: 4rem;font-weight: bold;"></div>
+                    <a href="#" class="btn btn-primary">Contacter l'agence</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container mt-4">
+
+        <p>
+            {{ employee.matricule | nl2br }}
+        </p>
+        <div class="row">
+            <div class="row">
+                <div class="col-md-4">{{ employee.lastname }}</div>
+                <div class="col-md-4">{{ employee.firstname }}</div>
+                <div class="col-md-4">{{ employee.address }}</div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+

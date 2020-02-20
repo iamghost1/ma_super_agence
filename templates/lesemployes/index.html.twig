@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+{% block title 'Gérer les employé(e)s' %}
+{% block body %}
+    <div class="container mt-4">
+        <h1>Gérer les Employé(e)s</h1>
+
+        {% for message in app.flashes('success') %}
+            <div class="alert alert-success">
+                {{ message }}
+            </div>
+        {% endfor %}
+
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Matricule</th>
+                <th>Last Name</th>
+                <th>First Name</th>
+                <th>Number</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for employees in employee %}
+                <tr>
+                    <td>{{ employees.matricule }}</td>
+                    <td>{{ employees.lastname }}</td>
+                    <td>{{ employees.firstname }}</td>
+                    <td>{{ employees.number }}</td>
+                    <td>
+                        <a href="{{ path('lesemployes.show',{id: employees.id, slug: employees.slug}) }}" class="btn btn-secondary">Afficher</a>
+                        <a href="{{ path('lesemployes.edit',{id: employees.id}) }}" class="btn btn-secondary">Editer</a>
+                        <form method="post" action="{{ path('lesemployes.delete', {id: employees.id}) }}" style="display: inline-block;" onsubmit="return confirm('êtes vous sur?')">
+                            <input type="hidden" name="_method" value="DELETE">
+                            <input type="hidden" name="_token" value="{{ csrf_token(employees.id) }}">
+                            <button class="btn btn-danger">Supprimer</button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <div class="text-right">
+            <a href="{{ path('lesemployes.new') }}" class="btn btn-primary">Créer un(e) employé(e)</a>
+        </div>
+    </div>
+
+
+
+
+{% endblock %}

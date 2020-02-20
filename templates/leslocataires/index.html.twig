@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+{% block title 'Gérer les employé(e)s' %}
+{% block body %}
+    <div class="container mt-4">
+        <h1>Gérer les Employé(e)s</h1>
+
+        {% for message in app.flashes('success') %}
+            <div class="alert alert-success">
+                {{ message }}
+            </div>
+        {% endfor %}
+
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Last Name</th>
+                <th>First Name</th>
+                <th>Apartment</th>
+                <th>Number</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for locataires in locataire %}
+                <tr>
+                    <td>{{ locataires.lastname }}</td>
+                    <td>{{ locataires.firstname }}</td>
+                    <td>{{ locataires.apartement }}</td>
+                    <td>{{ locataires.phone }}</td>
+                    <td>
+                        <a href="#" class="btn btn-secondary">Afficher</a>
+                        <a href="{{ path('leslocataires.edit',{id: locataires.id}) }}" class="btn btn-secondary">Editer</a>
+                        <form method="post" action="{{ path('leslocataires.delete', {id: locataires.id}) }}" style="display: inline-block;" onsubmit="return confirm('êtes vous sur?')">
+                            <input type="hidden" name="_method" value="DELETE">
+                            <input type="hidden" name="_token" value="{{ csrf_token(locataires.id) }}">
+                            <button class="btn btn-danger">Supprimer</button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <div class="text-right">
+            <a href="{{ path('leslocataires.new') }}" class="btn btn-primary">Créer un(e) employé(e)</a>
+        </div>
+    </div>
+
+
+
+
+{% endblock %}
